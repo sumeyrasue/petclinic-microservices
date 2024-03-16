@@ -3,14 +3,10 @@ kind: Service
 metadata:
   annotations:
     kompose.cmd: kompose convert -f docker-compose.yml -o petclinic_chart/templates
-    kompose.version: 1.32.0 (765fde254)
+    kompose.version: 1.31.2 (765fde254)
   labels:
     io.kompose.service: mysql-server
   name: mysql-server
 spec:
-  ports:
-    - name: "3306"
-      port: 3306
-      targetPort: 3306
-  selector:
-    io.kompose.service: mysql-server
+  type: ExternalName
+  externalName: petclinic.cru9c31njhyt.us-east-1.rds.amazonaws.com # Change this line with the endpoint of your RDS.
